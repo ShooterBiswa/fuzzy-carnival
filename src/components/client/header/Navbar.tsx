@@ -1,31 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import React from "react";
+import React, { useRef, useState } from "react";
 import { usePathname } from "next/navigation";
-
-const content = [
-  {
-    id: 1,
-    link: "/",
-    name: "Home",
-  },
-  {
-    id: 2,
-    link: "/about",
-    name: "About",
-  },
-  {
-    id: 3,
-    link: "/work",
-    name: "Work",
-  },
-  {
-    id: 1,
-    link: "/contact",
-    name: "Contact",
-  },
-];
+import content from "./content";
+import Menu from "../mobile_header/Menu";
 
 const Navbar = () => {
   const currentRoute = usePathname();
@@ -43,7 +22,7 @@ const Navbar = () => {
         {/* mobile view */}
         <Link
           href={"/"}
-          className="md:hidden font-semibold text-2xl tracking-tighter rounded-md border p-1 px-3 flex justify-center"
+          className="md:hidden font-semibold text-2xl tracking-tighter rounded-lg border p-1 px-3 flex justify-center"
         >
           BS
         </Link>
@@ -70,6 +49,9 @@ const Navbar = () => {
       <button className="hidden md:flex bg-neutral-800 text-white dark:bg-neutral-700 hover:bg-blue-500 hover:dark:bg-white hover:dark:text-black transition-colors delay-200 px-5 p-2 rounded-lg font-semibold tracking-wide">
         Let's talk
       </button>
+
+      {/* mobile view */}
+      <Menu />
     </nav>
   );
 };

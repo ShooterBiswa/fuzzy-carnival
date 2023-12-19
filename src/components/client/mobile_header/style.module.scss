@@ -1,0 +1,65 @@
+.button {
+    height: 2.63rem;
+    aspect-ratio: 1;
+    border-radius: var(--radius);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(242, 242, 242);
+    position: fixed;
+    right: 0;
+    margin: 2rem;
+
+    .burger{
+        width: 100%;
+
+        &::after, &::before {
+            content: '';
+            display: block;
+            width: 50%;
+            background-color: black;
+            height: 2px;
+            margin: auto;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        &::after{
+            top: -5px;
+        }
+        
+        &::before{
+            top: 5px;
+        }
+    }
+
+    .burgerActive{
+        &::after {
+            top: -1px;
+            transform: rotate(45deg);
+        }
+
+        &::before{
+            top: 1px;
+            transform: rotate(-45deg);
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .button{
+        display: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .button{
+        .burger {
+            &::after, &::before {
+                background-color: white;
+            }
+        }
+
+        background-color: rgb(34, 34, 34);
+    }
+  }
